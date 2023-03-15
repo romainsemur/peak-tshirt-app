@@ -1,4 +1,3 @@
-import logo from "../images/1.jpg";
 import {
   AppBar,
   Toolbar,
@@ -6,14 +5,15 @@ import {
   Typography,
   Box,
   IconButton,
+  Grid,
 } from "@mui/material";
 import { Mail } from "@mui/icons-material";
-import { Image } from "mui-image";
+import TshirtCard from "../TshirtCard";
 
 export default function HomePage() {
   return (
     <>
-      <AppBar position="static">
+      <AppBar position="sticky">
         <Toolbar>
           <Typography variant="h6" component="h1">
             Peak Shirt
@@ -32,8 +32,33 @@ export default function HomePage() {
           </Box>
         </Toolbar>
       </AppBar>
-      <Image src={logo} duration={0} alt="Peak Shirt Logo" />
-      <Typography>Construction en cours...</Typography>
+
+      <Grid container spacing={2}>
+        <Grid item xs={6}>
+          <TshirtCard />
+        </Grid>
+        <Grid item xs={6}>
+          <TshirtCard />
+        </Grid>
+        <Grid item xs={6}>
+          <TshirtCard />
+        </Grid>
+        <Grid item xs={6}>
+          <TshirtCard />
+        </Grid>
+        <Grid item xs={6}>
+          <TshirtCard />
+        </Grid>
+        <Grid item xs={6}>
+          <TshirtCard />
+        </Grid>
+        <Grid item xs={6}>
+          <TshirtCard />
+        </Grid>
+        <Grid item xs={6}>
+          <TshirtCard />
+        </Grid>
+      </Grid>
     </>
   );
 }
