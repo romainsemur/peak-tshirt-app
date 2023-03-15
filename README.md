@@ -23,6 +23,10 @@ Make your move, develop your nex feat, then commit with :
 yarn commit
 ```
 
+## Mockup
+
+![MockUp](./docs/mockup.png)
+
 ## CRA
 
 [Official CRA doc](./docs/CRA.md).
