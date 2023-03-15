@@ -1,3 +1,4 @@
+import React from "react";
 import {
   AppBar,
   Toolbar,
@@ -11,6 +12,17 @@ import { Mail } from "@mui/icons-material";
 import TshirtCard from "../TshirtCard";
 
 export default function HomePage() {
+  const [tshirts, setTshirts] = React.useState([]);
+
+  React.useEffect(() => {
+    async function fetchTshirts() {
+      const response = await fetch("http://localhost:3001/tshirts");
+      const tshirts = await response.json();
+      setTshirts(tshirts);
+    }
+    fetchTshirts();
+  }, []);
+
   return (
     <>
       <AppBar position="sticky">
@@ -34,30 +46,11 @@ export default function HomePage() {
       </AppBar>
 
       <Grid container spacing={2}>
-        <Grid item xs={6}>
-          <TshirtCard />
-        </Grid>
-        <Grid item xs={6}>
-          <TshirtCard />
-        </Grid>
-        <Grid item xs={6}>
-          <TshirtCard />
-        </Grid>
-        <Grid item xs={6}>
-          <TshirtCard />
-        </Grid>
-        <Grid item xs={6}>
-          <TshirtCard />
-        </Grid>
-        <Grid item xs={6}>
-          <TshirtCard />
-        </Grid>
-        <Grid item xs={6}>
-          <TshirtCard />
-        </Grid>
-        <Grid item xs={6}>
-          <TshirtCard />
-        </Grid>
+        {tshirts.map(({ id }) => (
+          <Grid item xs={6} key={id}>
+            <TshirtCard />
+          </Grid>
+        ))}
       </Grid>
     </>
   );
