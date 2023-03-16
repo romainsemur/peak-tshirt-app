@@ -10,7 +10,7 @@ import {
   CircularProgress,
 } from "@mui/material";
 import { Mail } from "@mui/icons-material";
-import { useTshirts } from "hooks";
+import { useTshirts } from "core/hooks";
 
 import TshirtCard from "../TshirtCard";
 

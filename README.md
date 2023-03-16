@@ -4,6 +4,15 @@
 
 ## Getting Started
 
+Create an /public/config.json file with
+
+```json
+{
+  "API_BASE_URL": "http://localhost:3001"
+}
+```
+
+It should be a `REACT_APP_API_BASE_URL` env var to host it on Netlify
 Install dependencies :
 
 ```shell
@@ -13,8 +22,8 @@ yarn
 Run the dev server and the local API:
 
 ```shell
-yarn start
 yarn start:api
+yarn start
 ```
 
 Make your move, develop your nex feat, then commit with :
