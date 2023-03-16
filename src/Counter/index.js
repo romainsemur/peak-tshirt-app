@@ -11,3 +11,4 @@ export default function Counter({ defaultCounter = 0, step = 1 }) {
     </article>
   );
 }
+//TODO A tester
