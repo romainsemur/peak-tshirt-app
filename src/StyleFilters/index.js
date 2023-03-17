@@ -1,14 +1,17 @@
-import { Chip } from "@mui/material";
-import { Stack } from "@mui/material";
+import { Chip, Stack, CircularProgress } from "@mui/material";
 import { useStyles } from "core/hooks";
-import React from "react";
+import { useSet } from "react-use";
 
 export default function StyleFilters() {
   const { isLoading, styles } = useStyles();
+  const [selectedStyles, { toggle }] = useSet(new Set());
 
-  const [selectedStyles, selectStyles] = React.useState([1, 2]);
+  const selectFilter = (id) => () => {
+    toggle(id);
+  };
 
-  if (isLoading) return "Loading...";
+  if (isLoading) return <CircularProgress />;
+
   return (
     <Stack
       direction="row"
@@ -21,11 +24,9 @@ export default function StyleFilters() {
           label={name}
           component="li"
           variant="outlined"
-          color={selectedStyles.includes(id) ? "primary" : "default"}
+          color={selectedStyles.has(id) ? "primary" : "default"}
           key={id}
-          onClick={() => {
-            console.log(`Click: ${id}`);
-          }}
+          onClick={selectFilter(id)}
         />
       ))}
     </Stack>
