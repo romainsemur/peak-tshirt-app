@@ -71,36 +71,6 @@ export default function HomePage() {
 
   return (
     <>
-      <AppBar>
-        <Toolbar>
-          <Typography variant="h6" component="h1">
-            Peak Shirt
-          </Typography>
-          <Search>
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase
-              onChange={(e) => setSearchWord(e.target.value)}
-              placeholder="Search…"
-              inputProps={{ "aria-label": "search" }}
-            />
-          </Search>
-          {/* <Box sx={{ flexGrow: 1 }} /> */}
-          <Box sx={{ display: { md: "flex" } }}>
-            <IconButton
-              size="large"
-              aria-label="show 4 new mails"
-              color="inherit"
-            >
-              <Badge badgeContent={4} color="error">
-                <AddShoppingCart />
-              </Badge>
-            </IconButton>
-          </Box>
-        </Toolbar>
-      </AppBar>
-
       {isLoading ? (
         <CircularProgress />
       ) : (
