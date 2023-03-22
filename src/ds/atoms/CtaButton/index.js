@@ -1,4 +1,5 @@
 import { Button } from "@mui/material";
+import { node } from "prop-types";
 
 /**
  *
@@ -6,16 +7,14 @@ import { Button } from "@mui/material";
  * import {CtaButton} from "ds/atoms";
  * <CtaButton startIcon={<AddShoppingCart /} fullWidth>Add to cart</CtaButton>
  */
-export default function CtaButton({ children, fullWidth, startIcon }) {
+export default function CtaButton({ children, ...rest }) {
   return (
-    <Button
-      variant="contained"
-      color="success"
-      size="large"
-      fullWidth={fullWidth}
-      startIcon={startIcon}
-    >
+    <Button variant="contained" color="success" size="large" {...rest}>
       {children}
     </Button>
   );
 }
+
+CtaButton.propTypes = {
+  children: node,
+};
