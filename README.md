@@ -36,6 +36,10 @@ yarn commit
 
 ![MockUp](./docs/mockup.png)
 
+## Design system
+
+Le Design System (DS) sera mis en place à travers l'approche [Atomic Design]() depuis le _folder_ `src/ds/`.
+
 ## CRA
 
 [Official CRA doc](./docs/CRA.md).
