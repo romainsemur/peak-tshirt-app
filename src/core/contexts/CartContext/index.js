@@ -10,7 +10,8 @@ export function useCart() {
 const reduce = (cart, action) => {
   switch (action.type) {
     case "add":
-      return [];
+      const { cartItem } = action.payload;
+      return [...cart, cartItem];
 
     case "remove":
       const { id } = action.payload;
@@ -24,15 +25,16 @@ const reduce = (cart, action) => {
   }
 };
 
+// { id: 1, price: 123, name: "Tshirt 1", quantity: 1, imageUrl: "1.jpg" },
 export function CartProvider({ children }) {
-  const [cart, dispatch] = React.useReducer(reduce, [
-    { id: 1, price: 123, name: "Tshirt 1", quantity: 1, imageUrl: "1.jpg" },
-    { id: 2, price: 13, name: "Tshirt 2", quantity: 3, imageUrl: "1.jpg" },
-  ]);
+  const [cart, dispatch] = React.useReducer(reduce, []);
 
   const purchaseCart = () => dispatch({ type: "purchase" });
   const removeFromCart = (id) => () =>
     dispatch({ type: "remove", payload: { id } });
+
+  const addToCart = (cartItem) => () =>
+    dispatch({ type: "add", payload: { cartItem } });
 
   const isCartEmpty = cart.length === 0;
   const cartItemsQuantity = cart.reduce(
@@ -44,7 +46,7 @@ export function CartProvider({ children }) {
     <CartContext.Provider
       value={[
         { cart, isCartEmpty, cartItemsQuantity },
-        { removeFromCart, purchaseCart },
+        { addToCart, removeFromCart, purchaseCart },
       ]}
     >
       {children}

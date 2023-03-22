@@ -1,5 +1,5 @@
 import { AddShoppingCart } from "@mui/icons-material";
-import { CircularProgress, Paper } from "@mui/material";
+import { CircularProgress } from "@mui/material";
 import { useCart } from "core/contexts";
 import useTshirt from "core/hooks/useTshirt";
 import { CtaButton } from "ds/atoms";
@@ -11,8 +11,17 @@ export default function TshirtPage() {
   let { tshirtId: id } = useParams();
 
   const { isLoading, tshirt } = useTshirt({ id });
-  const [cart, dispatch] = useCart();
+  const [, { addToCart }] = useCart();
+
   if (isLoading) return <CircularProgress />;
+
+  const cartItem = {
+    id: tshirt.id,
+    price: tshirt.price,
+    name: tshirt.name,
+    imageUrl: tshirt.imageUrl,
+    quantity: 1,
+  };
 
   return (
     <>
@@ -21,7 +30,7 @@ export default function TshirtPage() {
         <CtaButton
           startIcon={<AddShoppingCart />}
           fullWidth
-          onClick={() => dispatch({ type: "add" })}
+          onClick={addToCart(cartItem)}
         >
           Add to cart
         </CtaButton>
