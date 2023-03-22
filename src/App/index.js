@@ -27,11 +27,11 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <Layout />,
-    errorElement: <ErrorPage />,
     children: [
       {
         index: true,
         element: <HomePage />,
+        errorElement: <ErrorPage />,
       },
       {
         path: "tshirts/:tshirtId",
