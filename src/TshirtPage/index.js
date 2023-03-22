@@ -1,13 +1,14 @@
-import TshirtCard from "TshirtCard";
+import { CircularProgress } from "@mui/material";
+import useTshirt from "core/hooks/useTshirt";
+import { useParams } from "react-router-dom";
+import TshirtCard from "../TshirtCard";
 
 export default function TshirtPage() {
-  const tshirt = {
-    id: 1,
-    name: "Tshirt",
-    description: "",
-    imageUrl: "1.jpg",
-    size: "M",
-    price: 12.99,
-  };
+  let { tshirtId: id } = useParams();
+
+  const { isLoading, tshirt } = useTshirt({ id });
+
+  if (isLoading) return <CircularProgress />;
+
   return <TshirtCard {...tshirt} />;
 }
