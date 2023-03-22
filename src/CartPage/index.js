@@ -26,14 +26,7 @@ TotalPrice.propTypes = {
 };
 
 export default function CartPage() {
-  //   const cart = [
-  //     { id: 1, price: 123, name: "Tshirt 1", quantity: 1, imageUrl: "1.jpg" },
-  //     { id: 2, price: 13, name: "Tshirt 2", quantity: 3, imageUrl: "1.jpg" },
-  //   ];
-
-  const [cart, { purchaseCart }] = useCart();
-
-  const isCartEmpty = cart.length === 0;
+  const [{ cart, isCartEmpty }, { removeFromCart, purchaseCart }] = useCart();
 
   if (isCartEmpty) return <Typography>Go Shopping !</Typography>;
 
@@ -44,7 +37,11 @@ export default function CartPage() {
           <ListItem
             key={id}
             secondaryAction={
-              <IconButton edge="end" aria-label="delete">
+              <IconButton
+                edge="end"
+                aria-label="delete"
+                onClick={removeFromCart(id)}
+              >
                 <Delete />
               </IconButton>
             }

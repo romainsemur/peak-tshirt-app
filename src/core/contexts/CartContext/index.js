@@ -7,19 +7,20 @@ export function useCart() {
   return React.useContext(CartContext);
 }
 
-const reduce = (state, action) => {
+const reduce = (cart, action) => {
   switch (action.type) {
     case "add":
       return [];
 
     case "remove":
-      return [];
+      const { id } = action.payload;
+      return cart.filter(({ id: tshirtId }) => tshirtId !== id);
 
     case "purchase":
       return [];
 
     default:
-      return state;
+      return [...cart];
   }
 };
 
@@ -30,9 +31,22 @@ export function CartProvider({ children }) {
   ]);
 
   const purchaseCart = () => dispatch({ type: "purchase" });
+  const removeFromCart = (id) => () =>
+    dispatch({ type: "remove", payload: { id } });
+
+  const isCartEmpty = cart.length === 0;
+  const cartItemsQuantity = cart.reduce(
+    (quantity, item) => item.quantity + quantity,
+    0
+  );
 
   return (
-    <CartContext.Provider value={[cart, { purchaseCart }]}>
+    <CartContext.Provider
+      value={[
+        { cart, isCartEmpty, cartItemsQuantity },
+        { removeFromCart, purchaseCart },
+      ]}
+    >
       {children}
     </CartContext.Provider>
   );
