@@ -35,6 +35,7 @@ export default function Layout() {
           </Box>
         </Toolbar>
       </AppBar>
+
       <Outlet />
     </>
   );

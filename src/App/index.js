@@ -13,6 +13,7 @@ import TshirtPage from "TshirtPage";
 import HomePage from "../HomePage";
 import theme from "./theme";
 import Layout from "../Layout";
+import ErrorPage from "ErrorPage";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -26,6 +27,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <Layout />,
+    errorElement: <ErrorPage />,
     children: [
       {
         index: true,

@@ -1,19 +1,11 @@
 import React from "react";
 import {
-  AppBar,
-  Toolbar,
-  Badge,
-  Typography,
-  Box,
-  IconButton,
   Grid,
   CircularProgress,
   styled,
   alpha,
   InputBase,
 } from "@mui/material";
-import { AddShoppingCart } from "@mui/icons-material";
-import SearchIcon from "@mui/icons-material/Search";
 import { useTshirts } from "core/hooks";
 
 import TshirtCard from "../TshirtCard";
