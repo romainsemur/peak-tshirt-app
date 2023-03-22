@@ -32,8 +32,8 @@ export default function CartPage() {
 
   return (
     <>
-      {cart.map(({ id, price, name, quantity, imageUrl }) => (
-        <List>
+      <List>
+        {cart.map(({ id, price, name, quantity, imageUrl }) => (
           <ListItem
             key={id}
             secondaryAction={
@@ -61,9 +61,8 @@ export default function CartPage() {
               secondary={<Price value={price} />}
             />
           </ListItem>
-        </List>
-      ))}
-
+        ))}
+      </List>
       <BottomCallToActions secondary={<TotalPrice price={123.45} />}>
         <CtaButton startIcon={<ShoppingCartCheckout />} fullWidth>
           Purchase
