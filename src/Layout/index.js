@@ -7,11 +7,14 @@ import {
   Box,
   IconButton,
 } from "@mui/material";
-import { AddShoppingCart } from "@mui/icons-material";
+import { ShoppingCart, ShoppingCartOutlined } from "@mui/icons-material";
 
 import { Link, Outlet } from "react-router-dom";
+import { useCart } from "core/contexts";
 
 export default function Layout() {
+  const [cart] = useCart();
+  const isCartEmpty = cart.length === 0;
   return (
     <>
       <AppBar>
@@ -25,13 +28,13 @@ export default function Layout() {
           <Box sx={{ display: { md: "flex" } }}>
             <IconButton
               size="large"
-              aria-label="show 4 new mails"
+              aria-label="show shopping cart"
               color="inherit"
               LinkComponent={Link}
               to="./cart"
             >
-              <Badge badgeContent={4} color="error">
-                <AddShoppingCart />
+              <Badge badgeContent={cart.length} color="primary">
+                {isCartEmpty ? <ShoppingCartOutlined /> : <ShoppingCart />}
               </Badge>
             </IconButton>
           </Box>
