@@ -8,12 +8,14 @@ import { ThemeProvider } from "@mui/material/styles";
 import { FilterProvider } from "core/contexts";
 import { QueryClientProvider, QueryClient } from "react-query";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import TshirtPage from "TshirtPage";
 
-import HomePage from "../HomePage";
 import theme from "./theme";
+
+import TshirtPage from "../TshirtPage";
+import HomePage from "../HomePage";
 import Layout from "../Layout";
-import ErrorPage from "ErrorPage";
+import ErrorPage from "../ErrorPage";
+import CartPage from "../CartPage";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -36,6 +38,10 @@ const router = createBrowserRouter([
       {
         path: "tshirts/:tshirtId",
         element: <TshirtPage />,
+      },
+      {
+        path: "cart",
+        element: <CartPage />,
       },
     ],
   },
