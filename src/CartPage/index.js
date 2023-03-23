@@ -26,12 +26,18 @@ TotalPrice.propTypes = {
 };
 
 export default function CartPage() {
-  const [{ cart, isCartEmpty }, { removeFromCart, purchaseCart }] = useCart();
+  const [
+    { cart, isCartEmpty, cartItemsQuantity, cartTotalPrice },
+    { removeFromCart, purchaseCart },
+  ] = useCart();
 
   if (isCartEmpty) return <Typography>Go Shopping !</Typography>;
 
   return (
     <>
+      <Typography variant="h6">
+        Purchased items : ({`${cartItemsQuantity} articles`})
+      </Typography>
       <List>
         {cart.map(({ id, price, name, quantity, imageUrl }) => (
           <ListItem
@@ -67,7 +73,7 @@ export default function CartPage() {
           </ListItem>
         ))}
       </List>
-      <BottomCallToActions secondary={<TotalPrice price={123.45} />}>
+      <BottomCallToActions secondary={<TotalPrice price={cartTotalPrice} />}>
         <CtaButton
           startIcon={<ShoppingCartCheckout />}
           fullWidth
