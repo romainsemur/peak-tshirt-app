@@ -10,7 +10,7 @@ export const tshirts = {
   getList:
     ({ styleIds }) =>
     () => {
-      const tshirtRoute = new URL(`${API_BASE_URL}/tshirt`);
+      const tshirtRoute = new URL(`${API_BASE_URL}/tshirts`);
       const { searchParams } = tshirtRoute;
       styleIds.forEach((styleId) => {
         searchParams.append("styleId", styleId);
