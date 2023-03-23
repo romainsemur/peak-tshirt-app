@@ -9,7 +9,6 @@ import TshirtCard from "../TshirtCard";
 
 export default function TshirtPage() {
   let { tshirtId: id } = useParams();
-
   const { isLoading, tshirt } = useTshirt({ id });
   const [, { addToCart }] = useCart();
 
