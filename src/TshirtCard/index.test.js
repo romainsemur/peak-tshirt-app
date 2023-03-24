@@ -1,26 +1,19 @@
 import { screen } from "@testing-library/react";
-import renderWithRouter from "testUtils/renderWithRouter";
+import render from "testUtils/render";
 import TshirtCard from "./";
-
-const tshirt = {
-  id: 1,
-  name: "Tshirt",
-  description: "Tshirt Description",
-  imageUrl: "1.jpg",
-  size: "M",
-  price: 12.99,
-};
+import { createTshirt } from "testutils/fixtures";
 
 describe("TshirtCard", () => {
   test("without any prop, it does not render the title and the price", () => {
-    renderWithRouter(<TshirtCard />);
+    render(<TshirtCard />);
 
     expect(screen.queryByRole("heading", { level: 5 })).not.toBeInTheDocument();
     expect(screen.queryByRole("heading", { level: 6 })).not.toBeInTheDocument();
   });
 
   test("with correct prop, it does render the tshirtCard", () => {
-    renderWithRouter(<TshirtCard {...tshirt} />);
+    const tshirt = createTshirt();
+    render(<TshirtCard {...tshirt} />);
 
     expect(
       screen.getByRole("heading", { name: tshirt.name, level: 5 })
