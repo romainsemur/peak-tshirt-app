@@ -40,6 +40,14 @@ yarn commit
 
 Le Design System (DS) sera mis en place à travers l'approche [Atomic Design]() depuis le _folder_ `src/ds/`.
 
+## Storybook
+
+Run storybook :
+
+```shell
+yarn storybook
+```
+
 ## CRA
 
 [Official CRA doc](./docs/CRA.md).
