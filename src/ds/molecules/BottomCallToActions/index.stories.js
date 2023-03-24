@@ -1,8 +1,9 @@
 import { CtaButton } from "ds/atoms";
 import BottomCallToActions from ".";
+import { sbTitle } from "..";
 
 export default {
-  title: "BottomCallToActions",
+  title: sbTitle("BottomCallToActions"),
   component: BottomCallToActions,
 };
 
